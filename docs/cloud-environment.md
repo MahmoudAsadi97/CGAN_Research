@@ -6,7 +6,7 @@ loader can be added once the research requirements and release dataset are ready
 
 ## Install and activate
 
-The Codex cloud image provides Python 3.12 and uv. From `/workspace/CGAN_Research`:
+The cloud development image provides Python 3.12 and uv. From `/workspace/CGAN_Research`:
 
 ```bash
 bash scripts/setup-cloud.sh
@@ -63,10 +63,10 @@ checksum if supplied, and inspect its schema before building the loader. Keep
 large datasets, checkpoints, and generated training outputs out of Git commits.
 
 GitHub hosts the code and release files. Training runs on a compute machine.
-This Codex environment has no NVIDIA GPU. Use a GPU runtime in Colab, Kaggle,
+This cloud development environment has no NVIDIA GPU. Use a GPU runtime in Colab, Kaggle,
 or a GPU cloud VM for substantial training. Use that runtime's supported CUDA
 PyTorch installation instead of running this CPU-specific installer there.
 For GitHub Actions automation, connect a GPU machine as a self-hosted runner.
 
-Cloud tasks already have isolated workspaces. Use the provided checkout; do not
-create a Git worktree unless explicitly requested.
+The cloud workspace is already isolated. I use the provided checkout and do not
+need an additional Git worktree for this project.

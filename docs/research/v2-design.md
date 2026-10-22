@@ -1,25 +1,26 @@
 # V2 conditional load-profile research design
 
-Status: proposed design for review; implementation has not started.
+Status: baseline design approved on 2026-10-22, with EV ownership and charger
+labels excluded. Implementation planning is in progress.
 
 ## Goal and constraints
 
 Implement the method in Li, Dong, and Qiu (2025) and `malvin0130/cGAN_EB` on the
-user's measured dataset, with a reproducible Colab GPU workflow and figures
+my measured dataset, with a reproducible Colab GPU workflow and figures
 corresponding to the paper. Establish whether controlled improvements outperform
 the reference baseline under a credible held-out evaluation.
 
-All code, documentation, and commits belong on `V2` in
-`MahmoudAsadi97/CGAN_Research`. Push that branch only. The user decides whether
-to merge. Use the existing isolated checkout; no additional worktree is needed.
-Do not modify or create `main` as part of this work.
+I keep all research code, documentation, and commits on `V2` in
+`MahmoudAsadi97/CGAN_Research`. I will decide when to merge the work. The existing
+checkout is already isolated; no additional worktree is needed. `main` remains
+unchanged.
 
 Evidence and source-specific discrepancies are recorded in
-[the source audit](../../research/source-audit.md) and
-[the provenance manifest](../../research/source-manifest.json).
+[the source audit](source-audit.md) and
+[the provenance manifest](source-manifest.json).
 
 No result, condition label, unit, dataset size, or privacy guarantee may be
-invented. Synthetic demonstrations are marked as demonstrations. The user's
+invented. Synthetic demonstrations are marked as demonstrations. My
 publication objective requires measured results; this specification is not a
 claim of publication readiness or guaranteed improvement.
 
@@ -72,13 +73,29 @@ Season definitions and holiday jurisdiction must be explicit. The original
 paper uses northern-hemisphere month groupings and treats holidays as weekends;
 that convention is not assumed suitable for an unidentified new location.
 
-If PV/EV/charger attributes are absent, the proposed task becomes conditional
-load generation using available attributes, with the departure from the paper
-stated explicitly. Unsupported classes cannot be generated as validated cases.
+My dataset has no verified EV labels. The primary baseline therefore excludes
+EV ownership, EV adoption dates, charging events, and charger-level conditions.
+It must not infer these attributes from electricity consumption or treat missing
+EV information as a confirmed no-EV status.
+
+The initial conditioning scheme is season and calendar day type, derived from
+verified dates and an explicit calendar configuration. This gives up to eight
+observed classes when all four seasons and both day types are represented. PV
+status remains unknown and will only be added if independent metadata supports
+it. Missing calendar metadata must be resolved before deriving calendar labels.
+
+Any later EV-labeling study is a separate, explicitly labeled experiment.
+Verified ownership/adoption records describe household status; charger/submeter
+records can identify charging events. Inferences from aggregate load alone are
+pseudo-labels with uncertainty, not measured ownership or charging ground truth.
+Synthetic charging injection establishes synthetic labels only. Without
+independent validation, the project cannot make real-world EV detection or
+EV-specific load-generation accuracy claims. The no-EV-label baseline remains
+the primary comparison unless the research protocol is explicitly revised.
 
 ## 2. Splits and preprocessing
 
-The primary proposed claim is generalization to held-out households. When
+The primary claim to evaluate is generalization to held-out households. When
 household identifiers exist, use disjoint household groups with approximately
 70% training, 15% validation, and 15% test households and fixed split seed 42.
 Store exact assignment files before training; assess condition coverage without
@@ -128,7 +145,7 @@ averages, and uses `eval()` / `no_grad()` for generation. Record these engineeri
 changes. A named reference-order mode preserves fixed input order; epoch
 shuffling is a named ablation rather than an unreported baseline change.
 
-Use CPU for unit and short integration checks. Full runs target Colab's GPU.
+I use CPU for unit and short integration checks. Full research runs target Colab's GPU.
 Check actual GPU name, memory, CUDA/PyTorch versions, and throughput before
 choosing a run budget. Do not automatically launch 10,000-epoch multi-seed runs
 on this CPU workspace. Record shortened runs as pilots, never as full-budget
@@ -196,7 +213,7 @@ training-data resampling baseline. The latter tests whether the learned model
 adds value beyond copying the training distribution; it is not a privacy-safe
 generator.
 
-Proposed training seeds are 17, 42, 2025, 31415, and 27182, sharing one frozen
+The planned training seeds are 17, 42, 2025, 31415, and 27182, sharing one frozen
 data split. A pilot may use one seed to validate execution and estimate cost;
 that is not a five-seed performance result. Use validation macro feature
 Wasserstein distance, scaled by training feature standard deviations, for
@@ -229,7 +246,9 @@ by that comparison; profile shape, tails, and diversity trade-offs remain visibl
 
 Generate the figure families listed in the source audit. Retain orange real and
 teal generated curves and the paper's seasonal/scenario arrangement when those
-conditions exist. Export PDF/SVG and at least 300-DPI PNG from the same saved
+conditions exist. For the no-EV-label baseline, use season columns with a single
+all-households row per day type; add PV facets only when verified PV metadata
+exists. Do not relabel those panels with the paper's EV scenarios. Export PDF/SVG and at least 300-DPI PNG from the same saved
 tables. Include units, split, counts, model/seed identifiers, and estimator version
 in captions or accompanying metadata. Figures 1/2 are newly drawn workflow and
 architecture diagrams, not copied page images.
@@ -249,7 +268,7 @@ must not expose household identifiers or raw private records.
 
 ## 7. Software boundaries and Colab workflow
 
-The proposed package separates ingestion/audit, splitting/preprocessing, model,
+The package design separates ingestion/audit, splitting/preprocessing, model,
 training/checkpointing, metrics, figure generation, and a thin command interface.
 The notebook calls the same package used by automated tests; it does not contain
 a second independent training implementation.
@@ -257,7 +276,7 @@ a second independent training implementation.
 The Colab notebook will clone/check out `V2`, verify the chosen commit and GPU,
 install only needed compatible project dependencies, download the declared data
 asset, run the audit and split preparation, run a small integration check, train
-or resume, evaluate, export figures, and persist artifacts to user-selected Drive
+or resume, evaluate, export figures, and persist artifacts to my selected Drive
 storage. Mounting/authenticating Drive remains an explicit notebook interaction.
 Do not run the existing CPU cloud installer over Colab's CUDA PyTorch.
 
@@ -284,8 +303,8 @@ file-level implementation plan. Implementation tests must cover:
 6. A measured-data pilot and a real Colab GPU run before claiming GPU workflow
    validation; full baseline/candidate runs before any performance claim.
 
-Current deliverables are `V2`, source provenance, the audit, and this proposed
-design. The first external prerequisite is the actual dataset asset. The Colab
-runtime is not attached to this chat: code execution there must be initiated in
-the notebook, and resulting artifacts made available for review. No research
-training has occurred and no same-or-better result is claimed.
+Current deliverables are `V2`, source provenance, the audit, and this approved
+baseline design. The first data prerequisite is the actual dataset asset. I run
+GPU experiments in Colab and preserve the resulting logs, checkpoints, metrics,
+and figures for review. No research training has occurred and no same-or-better
+result is claimed.

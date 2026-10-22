@@ -24,22 +24,6 @@
     "original_real_data_available": false,
     "data_availability_statement": "The data that has been used is confidential."
   },
-  "user_release": {
-    "tag": "Dataset",
-    "page": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/tag/Dataset",
-    "inspected_asset_listing": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/expanded_assets/Dataset",
-    "attached_dataset_assets_observed": [],
-    "automatic_source_archives": [
-      "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.zip",
-      "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.tar.gz"
-    ],
-    "tag_commit": "eda0b6ba094fc8e475361702b16b12286afa372d",
-    "tag_files": [
-      "docs/cloud-environment.md",
-      "scripts/setup-cloud.sh"
-    ],
-    "status": "blocked_missing_dataset_asset"
-  },
   "upstream_shared_data": {
     "kind": "generated synthetic examples, not real training data",
     "files": 64,
@@ -79,5 +63,45 @@
     }
   },
   "research_training_executed": false,
-  "publication_results_available": false
+  "publication_results_available": false,
+  "dataset_release": {
+    "tag": "Dataset",
+    "page": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/tag/Dataset",
+    "inspected_asset_listing": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/expanded_assets/Dataset",
+    "attached_dataset_assets_observed": [],
+    "automatic_source_archives": [
+      "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.zip",
+      "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.tar.gz"
+    ],
+    "tag_commit": "eda0b6ba094fc8e475361702b16b12286afa372d",
+    "tag_files": [
+      "docs/cloud-environment.md",
+      "scripts/setup-cloud.sh"
+    ],
+    "status": "blocked_missing_dataset_asset",
+    "rechecked_at_utc": "2026-10-22T09:46:00Z",
+    "source_archive_sizes_bytes": {
+      "zip": 5997,
+      "tar_gz": 5260
+    }
+  },
+  "dataset_metadata": {
+    "ev_labels": "not available; confirmed by project owner",
+    "pv_labels": "unverified",
+    "raw_schema": "unavailable until a real dataset asset is provided"
+  },
+  "baseline_conditioning": {
+    "fields": [
+      "season",
+      "day_type"
+    ],
+    "requires": "verified timestamps and explicit calendar configuration",
+    "excluded": [
+      "EV ownership",
+      "EV adoption dates",
+      "EV charging events",
+      "EV charger levels"
+    ],
+    "missing_ev_status_is_not_no_ev": true
+  }
 }

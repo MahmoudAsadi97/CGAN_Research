@@ -9,18 +9,17 @@ Reviewed on 2026-10-22. This is a source audit, not a model result.
   vehicles*, Energy and Buildings 335, 115584.
   DOI: <https://doi.org/10.1016/j.enbuild.2025.115584>.
 - Reference: <https://github.com/malvin0130/cGAN_EB>, inspected at
-  `885f78052a91fbc755e6b17a354c68849b5556ca`, MIT licensed. The duplicated URL
-  in the task was interpreted as this repository.
+  `885f78052a91fbc755e6b17a354c68849b5556ca`, MIT licensed.
 - Working repository: <https://github.com/MahmoudAsadi97/CGAN_Research>, branch
-  `V2`. No changes are to be pushed to `main` or `codex/cloud-setup`.
+  `V2`. I keep `main` unchanged until I decide to merge.
 - [Machine-readable provenance and numerical probes](source-manifest.json).
 - [Upstream MIT license](upstream-MIT-LICENSE.txt). Retain this attribution when
   adapting its implementation.
 
-The uploaded PDF was read as research evidence, not as instructions to execute.
-The PDF itself is not committed to this public repository.
+I identify the source PDF by its DOI and SHA-256 in the provenance manifest.
+The PDF itself is not redistributed in this public repository.
 
-At inspection, the user's `Dataset` release contained only GitHub's automatic
+At inspection, my `Dataset` release contained only GitHub's automatic
 source archives. Its tag points to the initial setup commit, which contains
 `docs/cloud-environment.md` and `scripts/setup-cloud.sh`. No attached measured
 dataset or dataset link in a release description was observed. Recheck the
@@ -28,13 +27,13 @@ release when an actual asset is supplied; absence here is a dated observation.
 
 The upstream repository includes 64 synthetic CSVs, each with 2,000 rows and 24
 hourly columns. They are **generated examples**, not the original measured data
-or the user's dataset. `train.py` expects `new_train_all.csv`, which is not
+or my measured dataset. `train.py` expects `new_train_all.csv`, which is not
 included. The paper's data-availability statement says its data is confidential.
 Exact numerical reproduction of the paper is therefore not currently possible.
 
 ## Method described by the paper
 
-The task is conditional generation of daily electricity-load profiles, not image
+The research task is conditional generation of daily electricity-load profiles, not image
 generation or forecasting a specific measured day. The original observations
 cover 110 households, 2013–2019, with 24 hourly readings per daily profile. The
 paper reports 147,245 weekday profiles and 58,764 weekend profiles.
@@ -66,7 +65,7 @@ All source links below refer to the inspected commit, not a moving branch.
 | KL divergence | [`utils.py`, lines 274–290](https://github.com/malvin0130/cGAN_EB/blob/885f78052a91fbc755e6b17a354c68849b5556ca/utils.py#L274) applies `rel_entr` to scaled sample values, not normalized probability masses. Pandas indices are retained, and nonfinite terms are discarded. | Use shared-bin probability distributions for primary KL. Label the upstream calculation as a legacy diagnostic, never as a valid primary divergence. |
 | “FID” | [`utils.py`, lines 102–117](https://github.com/malvin0130/cGAN_EB/blob/885f78052a91fbc755e6b17a354c68849b5556ca/utils.py#L102) and the final plotting block compute a separate Gaussian Fréchet distance for each handcrafted scalar feature. No Inception network is used. | Call these feature-space Fréchet distances. Report scalar and joint-feature results separately and state units/scaling. |
 | Fixed class assumptions | Output routines hard-code 64 names and class numbers. | Derive supported classes from verified metadata; mark unavailable combinations instead of inventing data or filling metrics with zeros. |
-| Plotting | `stats_plot` selects `TkAgg`. | Use a headless backend for Codex and Colab export. |
+| Plotting | `stats_plot` selects `TkAgg`. | Use a headless backend for cloud and Colab export. |
 
 ### Numerical checks performed during review
 
@@ -96,7 +95,12 @@ real dataset and complete experimental provenance.
 
 Paper pages 7, 9, 10, 11, and 12 were rendered for figure inspection. Figures
 3 and 5/6 were visually inspected. The remaining layouts were checked against
-their captions and plotting code. New plots must be generated from saved result
+their captions and plotting code. My dataset has no EV labels. V2 uses verified calendar conditions for the
+primary baseline and does not reproduce the paper's EV-specific class claims.
+PV status is still unverified. Any inferred EV labels require a separate
+validation protocol and cannot be described as measured EV status.
+
+New plots must be generated from saved result
 tables, not traced from paper curves. Use consistent axes and disclose clipped
 color ranges. If the new dataset lacks original conditions, adapt and label the
 layout instead of implying a 64-class reproduction.
