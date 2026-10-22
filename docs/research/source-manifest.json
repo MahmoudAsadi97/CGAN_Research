@@ -1,0 +1,83 @@
+{
+  "review_date": "2026-10-22",
+  "target_repository": "https://github.com/MahmoudAsadi97/CGAN_Research",
+  "work_branch": "V2",
+  "initial_commit": "eda0b6ba094fc8e475361702b16b12286afa372d",
+  "reference_repository": "https://github.com/malvin0130/cGAN_EB",
+  "reference_commit": "885f78052a91fbc755e6b17a354c68849b5556ca",
+  "reference_license": "MIT",
+  "paper": {
+    "title": "Conditional generative adversarial network (cGAN) for generating building load profiles with photovoltaics and electric vehicles",
+    "authors": [
+      "Yuewei Li",
+      "Bing Dong",
+      "Yueming Qiu"
+    ],
+    "doi": "10.1016/j.enbuild.2025.115584",
+    "year": 2025,
+    "journal": "Energy and Buildings",
+    "volume": "335",
+    "article": "115584",
+    "pages_in_uploaded_pdf": 14,
+    "uploaded_filename": "Paper_1.pdf",
+    "sha256": "00e7710f37155dc8b84488d884dca84582a14e82877e1dc8f8180d52dcba5a87",
+    "original_real_data_available": false,
+    "data_availability_statement": "The data that has been used is confidential."
+  },
+  "user_release": {
+    "tag": "Dataset",
+    "page": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/tag/Dataset",
+    "inspected_asset_listing": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/expanded_assets/Dataset",
+    "attached_dataset_assets_observed": [],
+    "automatic_source_archives": [
+      "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.zip",
+      "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.tar.gz"
+    ],
+    "tag_commit": "eda0b6ba094fc8e475361702b16b12286afa372d",
+    "tag_files": [
+      "docs/cloud-environment.md",
+      "scripts/setup-cloud.sh"
+    ],
+    "status": "blocked_missing_dataset_asset"
+  },
+  "upstream_shared_data": {
+    "kind": "generated synthetic examples, not real training data",
+    "files": 64,
+    "rows_per_file": 2000,
+    "hourly_columns": 24
+  },
+  "metric_audit": {
+    "quantile_probe": {
+      "input": "0,1,...,23",
+      "numpy_linear_quantile_0.025": 0.5750000000000001,
+      "upstream_base_order_statistic": 1.0,
+      "numpy_linear_quantile_0.975": 22.425,
+      "upstream_peak_order_statistic": 22.0
+    },
+    "upstream_kl_permutation_probe": {
+      "real": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "generated": [
+        1,
+        1,
+        4,
+        4
+      ],
+      "generated_permutation": [
+        4,
+        4,
+        1,
+        1
+      ],
+      "first_score": 0.03270300898528424,
+      "permuted_score": 0.3792765992652569,
+      "conclusion": "The reported score is not invariant to ordering of samples in the same empirical distribution."
+    }
+  },
+  "research_training_executed": false,
+  "publication_results_available": false
+}
