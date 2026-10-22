@@ -1,9 +1,16 @@
 # EV labels: evidence, uncertainty, and research claims
 
-My measured dataset currently has no verified EV labels. I keep the primary
-calendar-conditioned cGAN independent of any EV inference. This note records
-the requirements for a possible separate experiment; it does not add an EV
-detector to the approved baseline.
+The inspected release includes `Elektrisch_Voertuig_Indicator`, a provider-supplied
+EV-detection flag. According to its data dictionary, it includes battery and
+plug-in hybrid vehicles; `1` means detected and `0` means not detected, which
+does not establish absence. These labels can define detected/not-detected
+cohorts without creating new labels. They do not establish verified ownership,
+charger level, adoption date, charging events, or isolated EV consumption.
+
+I keep the approved calendar-conditioned baseline independent of EV inference.
+A cohort-conditioned extension should preserve the provider label and its
+limitations. The separate considerations below apply if I later develop or
+validate my own detector. See the [dataset audit](dataset-audit.md).
 
 ## Define what a label means
 

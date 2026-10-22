@@ -68,7 +68,15 @@
     "tag": "Dataset",
     "page": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/tag/Dataset",
     "inspected_asset_listing": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/expanded_assets/Dataset",
-    "attached_dataset_assets_observed": [],
+    "attached_dataset_assets_observed": [
+      {
+        "url": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/download/Dataset/raw.zip",
+        "bytes": 395824014,
+        "sha256": "854b18f4adfd269675baabe7388578f4a1b7bb440529c09854fa0952574ae449",
+        "published_sha256": "854b18f4adfd269675baabe7388578f4a1b7bb440529c09854fa0952574ae449",
+        "checksum_verified": true
+      }
+    ],
     "automatic_source_archives": [
       "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.zip",
       "https://github.com/MahmoudAsadi97/CGAN_Research/archive/refs/tags/Dataset.tar.gz"
@@ -78,17 +86,36 @@
       "docs/cloud-environment.md",
       "scripts/setup-cloud.sh"
     ],
-    "status": "blocked_missing_dataset_asset",
-    "rechecked_at_utc": "2026-10-22T09:46:00Z",
+    "status": "downloaded_checksum_verified_full_data_audit_complete",
+    "rechecked_at_utc": "2026-10-22T10:44:39.763077+00:00",
     "source_archive_sizes_bytes": {
       "zip": 5997,
       "tar_gz": 5260
-    }
+    },
+    "audit": "dataset-audit.json"
   },
   "dataset_metadata": {
-    "ev_labels": "not available; confirmed by project owner",
-    "pv_labels": "unverified",
-    "raw_schema": "unavailable until a real dataset asset is provided"
+    "ev_labels": "Provider EV-detection indicator present; 0 is not detected, not verified absence. No independent ownership/event/charger-level labels.",
+    "pv_labels": "Provider PV-installation indicator present; source limitations in dataset-audit.md.",
+    "heat_pump_labels": "Provider main-heating indicator present; legend definition inconsistency noted in dataset-audit.md.",
+    "raw_schema": [
+      "EAN_ID",
+      "Datum",
+      "Datum_Startuur",
+      "Volume_Afname_KWh",
+      "Volume_Injectie_KWh",
+      "Warmtepomp_Indicator",
+      "Elektrisch_Voertuig_Indicator",
+      "PV_Installatie_Indicator",
+      "Contract_Categorie"
+    ],
+    "meters": 2400,
+    "electricity_rows": 84326400,
+    "sampling_minutes": 15,
+    "year": 2024,
+    "electricity_units": "quarter-hour imported/exported energy kWh",
+    "weather_rows": 35136,
+    "weather_join_validated": false
   },
   "baseline_conditioning": {
     "fields": [

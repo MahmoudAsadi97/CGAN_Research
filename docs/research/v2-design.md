@@ -5,7 +5,7 @@ labels excluded. Implementation planning is in progress.
 
 ## Goal and constraints
 
-Implement the method in Li, Dong, and Qiu (2025) and `malvin0130/cGAN_EB` on the
+Implement the method in Li, Dong, and Qiu (2025) and `malvin0130/cGAN_EB` on
 my measured dataset, with a reproducible Colab GPU workflow and figures
 corresponding to the paper. Establish whether controlled improvements outperform
 the reference baseline under a credible held-out evaluation.
@@ -40,12 +40,13 @@ claim of publication readiness or guaranteed improvement.
 
 ## 1. Data and provenance contract
 
-The current release contains source archives only. Before an importer can be
-finalized, obtain the real asset URL and inspect filenames, types, schema,
-units, sampling frequency, timezone, household identifiers, dates, and actual
-conditioning metadata. Check whether observations are measured or simulated.
-Record asset URL, byte count, local SHA-256, and any publisher-provided checksum.
-Do not treat a locally computed checksum as verification against a publisher.
+The release now contains `raw.zip`, downloaded and verified against the published
+SHA-256. Its full contents and schema are recorded in the [dataset audit](dataset-audit.md).
+Electricity readings are quarter-hour imported/exported energy in kWh, documented
+in Belgian CET/CEST local time despite a literal `Z` suffix. Weather timezone,
+units, and measurement provenance still require confirmation before joining it.
+Retain the asset URL, byte count, local SHA-256, and publisher checksum. Source
+integrity does not by itself establish measurement accuracy.
 
 The internal daily representation will have:
 
@@ -73,7 +74,8 @@ Season definitions and holiday jurisdiction must be explicit. The original
 paper uses northern-hemisphere month groupings and treats holidays as weekends;
 that convention is not assumed suitable for an unidentified new location.
 
-My dataset has no verified EV labels. The primary baseline therefore excludes
+My dataset has provider EV-detection flags, but no verified ownership or event
+labels. The approved primary baseline excludes
 EV ownership, EV adoption dates, charging events, and charger-level conditions.
 It must not infer these attributes from electricity consumption or treat missing
 EV information as a confirmed no-EV status.
@@ -81,8 +83,10 @@ EV information as a confirmed no-EV status.
 The initial conditioning scheme is season and calendar day type, derived from
 verified dates and an explicit calendar configuration. This gives up to eight
 observed classes when all four seasons and both day types are represented. PV
-status remains unknown and will only be added if independent metadata supports
-it. Missing calendar metadata must be resolved before deriving calendar labels.
+status is supplied in the release and can support a separately documented
+extension. The newly inspected heat-pump and EV-detection indicators also require
+their source definitions to be preserved. Calendar configuration must be explicit
+before deriving calendar labels.
 
 Any later EV-labeling study is a separate, explicitly labeled experiment.
 Verified ownership/adoption records describe household status; charger/submeter
@@ -303,8 +307,8 @@ file-level implementation plan. Implementation tests must cover:
 6. A measured-data pilot and a real Colab GPU run before claiming GPU workflow
    validation; full baseline/candidate runs before any performance claim.
 
-Current deliverables are `V2`, source provenance, the audit, and this approved
-baseline design. The first data prerequisite is the actual dataset asset. I run
-GPU experiments in Colab and preserve the resulting logs, checkpoints, metrics,
-and figures for review. No research training has occurred and no same-or-better
-result is claimed.
+Current deliverables are `V2`, source provenance, the completed release audit,
+and this approved baseline design. The next data work is the long-format adapter,
+declared load/calendar mapping, and daily-profile preparation. The GPU workflow
+will run in Colab and preserve logs, checkpoints, metrics, and figures for review.
+No research training has occurred and no same-or-better result is claimed.

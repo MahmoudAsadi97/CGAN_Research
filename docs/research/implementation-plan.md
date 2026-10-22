@@ -16,15 +16,19 @@ traceback uses Python 3.13. Those are the initial runtime targets, with package
 compatibility and execution recorded before either is claimed as supported.
 Colab retains its compatible CUDA-enabled PyTorch.
 
-**Specification:** [Approved research design](v2-design.md), including the
-confirmed absence of EV labels. Optional inferred EV patterns are discussed in
-[a separate note](ev-labeling.md) and are not part of these implementation tasks.
+**Specification:** [Approved research design](v2-design.md), with verified EV
+ownership/event labels excluded. The later [dataset audit](dataset-audit.md)
+establishes that provider EV-detection, PV, and heat-pump indicators are present.
+The initial calendar baseline remains the comparison point; adding those cohort
+conditions is a distinct protocol extension. Optional inferred EV patterns are
+discussed in [a separate note](ev-labeling.md).
 
 ## Global constraints
 
 - Work and pushes remain on `V2`; `main` is unchanged.
 - No EV ownership, adoption-date, event, or charger-level labels enter the
-  baseline. Unknown EV status is not a no-EV label. PV metadata is unverified.
+  baseline. Provider EV-not-detected is not a verified no-EV label. PV and
+  heat-pump indicators are available with documented source limitations.
 - Baseline conditions are verified `season` and `day_type`, with up to eight
   observed classes. Timestamp/calendar requirements must be explicit.
 - Daily profiles have exactly 24 finite hourly readings, with units and interval
@@ -358,10 +362,10 @@ configuration, and command outcomes. It supports an explicit resume path.
   compatible dependency installation, optional authenticated Drive mounting,
   dataset download/audit/preparation, bounded pilot, train/resume, evaluation,
   plotting, and artifact persistence. Do not start a full run automatically.
-- [ ] Once the actual dataset is attached, inspect it, supply its explicit
-  column/unit/calendar mapping, and run the complete audit. A long-format or
-  non-CSV input requires a small adapter plan and tests grounded in the actual
-  schema. Do not replace missing real data with upstream generated samples.
+- [ ] Use the completed release audit to implement the long-format quarter-hour
+  adapter with explicit column/unit/calendar mapping and tests grounded in the
+  observed schema. Verify prepared daily profiles against source totals and
+  declared DST exclusions. Resolve weather metadata before any weather join.
 - [ ] Run a measured-data pilot, record GPU throughput and memory, and freeze
   a concrete GPU-time budget, evaluation interval, and candidate configurations
   in the experiment register before launching full runs. These values depend
@@ -377,15 +381,15 @@ configuration, and command outcomes. It supports an explicit resume path.
 ## Delivery and outstanding inputs
 
 Tasks 1–6 can be implemented and checked with clearly marked synthetic fixtures
-once this plan is reviewed. The actual data schema must still be inspected
-before claiming that an importer supports my dataset. Task 7's measured-data
-and GPU checks require the real asset and execution in my Colab runtime.
+once this plan is reviewed. The real asset has now been downloaded and its schema
+inspected; the importer must be checked against it before claiming support.
+Task 7's GPU checks still require execution in my Colab runtime.
 
-As rechecked on 22 October 2026, the release has no measured-data attachment.
-The lack of EV labels is already resolved as a baseline design constraint; no
-EV record is required to start the calendar-conditioned project. Independent EV
-records, if they become available, are only a prerequisite for a separate
-validated EV-labeling experiment.
+The [dataset audit](dataset-audit.md) records the full release check on
+22 October 2026. The remaining inputs concern weather time convention, units,
+and source provenance, rather than missing electricity files. Independent EV
+records remain necessary for claims about detector accuracy or charging events;
+they are not required to describe the supplied provider-detection cohorts.
 
 Before each push, run the tests appropriate to the changes, check staged files
 for unintended data or credentials, and verify the destination is `V2`. Use the

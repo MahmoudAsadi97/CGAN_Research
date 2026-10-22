@@ -8,11 +8,11 @@ controlled experiments on held-out data.
 
 ## Research scope
 
-My dataset does **not** have verified EV labels. The primary model will use
-season and calendar day type, provided that the timestamps and calendar
-conventions can be verified. I will add PV conditions only if independent PV
-metadata is available. Missing EV information does not mean that a household
-has no EV.
+My dataset includes provider-supplied PV, heat-pump, and **EV-detection**
+indicators. The EV indicator is not verified ownership or a charging-event
+label: zero means no EV was detected, not proven absence. The approved initial
+model uses season and calendar day type. These newly inspected indicators can
+support a documented extension, with their source definitions preserved.
 
 I may investigate inferred charging-related patterns as a separate experiment.
 Without charger records or another independent reference, those patterns cannot
@@ -30,8 +30,11 @@ so I keep corrected metrics separate from historical compatibility diagnostics.
 - The research design is approved, with EV labels excluded from the baseline.
 - The implementation plan is available for review. The training pipeline has
   not been implemented yet.
-- As checked on 22 October 2026, the `Dataset` release contains only automatic
-  source-code archives. The measured data file still needs to be attached.
+- The `Dataset` release now includes `raw.zip`. I downloaded it and verified
+  its SHA-256 against the published release checksum. The archive contains
+  eight electricity CSVs, a data dictionary, and the Brussels temperature
+  workbook. The [dataset audit](docs/research/dataset-audit.md) records coverage,
+  label definitions, and the remaining weather-alignment questions.
 - The CPU development environment has passed synthetic dependency checks. No
   model has been trained or evaluated on my measured data, and no improvement
   over the paper is claimed.
@@ -42,6 +45,7 @@ so I keep corrected metrics separate from historical compatibility diagnostics.
 - [Implementation plan](docs/research/implementation-plan.md)
 - [Paper and source-code audit](docs/research/source-audit.md)
 - [Source provenance](docs/research/source-manifest.json)
+- [Dataset availability and quality audit](docs/research/dataset-audit.md)
 - [EV-labeling considerations](docs/research/ev-labeling.md)
 - [CPU development environment](docs/cloud-environment.md)
 

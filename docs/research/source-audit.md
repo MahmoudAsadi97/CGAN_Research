@@ -19,11 +19,11 @@ Reviewed on 2026-10-22. This is a source audit, not a model result.
 I identify the source PDF by its DOI and SHA-256 in the provenance manifest.
 The PDF itself is not redistributed in this public repository.
 
-At inspection, my `Dataset` release contained only GitHub's automatic
-source archives. Its tag points to the initial setup commit, which contains
-`docs/cloud-environment.md` and `scripts/setup-cloud.sh`. No attached measured
-dataset or dataset link in a release description was observed. Recheck the
-release when an actual asset is supplied; absence here is a dated observation.
+The first inspection found only GitHub's automatic source archives. A later
+check on 2026-10-22 found the attached `raw.zip`, which I downloaded and verified
+against its published SHA-256. The release tag still identifies the setup code;
+the attached asset supplies the measured dataset. The [dataset audit](dataset-audit.md)
+supersedes the earlier missing-data observation.
 
 The upstream repository includes 64 synthetic CSVs, each with 2,000 rows and 24
 hourly columns. They are **generated examples**, not the original measured data
@@ -95,10 +95,11 @@ real dataset and complete experimental provenance.
 
 Paper pages 7, 9, 10, 11, and 12 were rendered for figure inspection. Figures
 3 and 5/6 were visually inspected. The remaining layouts were checked against
-their captions and plotting code. My dataset has no EV labels. V2 uses verified calendar conditions for the
-primary baseline and does not reproduce the paper's EV-specific class claims.
-PV status is still unverified. Any inferred EV labels require a separate
-validation protocol and cannot be described as measured EV status.
+their captions and plotting code. The newly inspected dataset has provider EV
+detection, PV, and heat-pump indicators. It has no EV charger-level or adoption-date
+labels matching the paper's scenarios. The approved initial baseline uses calendar
+conditions; an extension using provider indicators must retain their definitions
+and cannot claim the paper's original EV scenarios or verified charging events.
 
 New plots must be generated from saved result
 tables, not traced from paper curves. Use consistent axes and disclose clipped
@@ -118,5 +119,5 @@ definitions, generation counts, and declared seeds**. Present raw-paper-style
 diagnostics separately from corrected metrics. A lower score on a different
 dataset does not establish superiority over the paper's original experiment.
 
-Current status: branch created and pushed; source review and numerical probes
-completed; actual dataset unavailable; no research model trained or evaluated.
+Current status: source review and numerical probes completed; actual dataset
+downloaded and audited separately; no research model trained or evaluated.

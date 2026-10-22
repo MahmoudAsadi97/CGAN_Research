@@ -1,0 +1,342 @@
+{
+  "checked_at_utc": "2026-10-22T10:44:39.763077+00:00",
+  "scope": "Full scan of every row in all eight electricity CSVs, full weather workbook, source legend, archive integrity; no model training.",
+  "archive": {
+    "url": "https://github.com/MahmoudAsadi97/CGAN_Research/releases/download/Dataset/raw.zip",
+    "bytes": 395824014,
+    "sha256": "854b18f4adfd269675baabe7388578f4a1b7bb440529c09854fa0952574ae449",
+    "published_sha256": "854b18f4adfd269675baabe7388578f4a1b7bb440529c09854fa0952574ae449",
+    "checksum_verified": true
+  },
+  "archive_inventory": [
+    {
+      "path": "raw/",
+      "bytes": 0,
+      "directory": true
+    },
+    {
+      "path": "raw/1.50 Aanleveirng DMK Elek Fluvius Legende 25200929.xlsx",
+      "bytes": 20436,
+      "directory": false
+    },
+    {
+      "path": "raw/Brussels_Temperature_15min_2024.xlsx",
+      "bytes": 747544,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/",
+      "bytes": 0,
+      "directory": true
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_enkel_ZP.csv",
+      "bytes": 790497785,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_geen_ZP.csv",
+      "bytes": 790345181,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_WP_geen_ZP.csv",
+      "bytes": 797294675,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_WP_met_ZP.csv",
+      "bytes": 797786309,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/",
+      "bytes": 0,
+      "directory": true
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_EV_geen_ZP.csv",
+      "bytes": 800926499,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_EV_met_ZP.csv",
+      "bytes": 804175121,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_WP_EV_geen_ZP.csv",
+      "bytes": 800697761,
+      "directory": false
+    },
+    {
+      "path": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_WP_EV_met_ZP.csv",
+      "bytes": 808132319,
+      "directory": false
+    },
+    {
+      "path": "raw/_prepare.log",
+      "bytes": 555,
+      "directory": false
+    }
+  ],
+  "electricity": {
+    "files": [
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_WP_geen_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "1",
+          "Elektrisch_Voertuig_Indicator": "0",
+          "PV_Installatie_Indicator": "0",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 6.22,
+            "positive_rows": 10485824
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 0.178,
+            "positive_rows": 339
+          }
+        }
+      },
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_WP_met_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "1",
+          "Elektrisch_Voertuig_Indicator": "0",
+          "PV_Installatie_Indicator": "1",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 5.632,
+            "positive_rows": 8381630
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 2.466,
+            "positive_rows": 3363528
+          }
+        }
+      },
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_enkel_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "0",
+          "Elektrisch_Voertuig_Indicator": "0",
+          "PV_Installatie_Indicator": "1",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 3.267,
+            "positive_rows": 7630684
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 1.968,
+            "positive_rows": 3532168
+          }
+        }
+      },
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/P6269_Open_Data_geen_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "0",
+          "Elektrisch_Voertuig_Indicator": "0",
+          "PV_Installatie_Indicator": "0",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 5.144,
+            "positive_rows": 10504969
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 0.001,
+            "positive_rows": 1
+          }
+        }
+      },
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_EV_geen_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "0",
+          "Elektrisch_Voertuig_Indicator": "1",
+          "PV_Installatie_Indicator": "0",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 4.874,
+            "positive_rows": 10511723
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 0.0,
+            "positive_rows": 0
+          }
+        }
+      },
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_EV_met_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "0",
+          "Elektrisch_Voertuig_Indicator": "1",
+          "PV_Installatie_Indicator": "1",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 5.218,
+            "positive_rows": 7811526
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 2.797,
+            "positive_rows": 3241634
+          }
+        }
+      },
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_WP_EV_geen_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "1",
+          "Elektrisch_Voertuig_Indicator": "1",
+          "PV_Installatie_Indicator": "0",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 7.095,
+            "positive_rows": 10473588
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 0.001,
+            "positive_rows": 12
+          }
+        }
+      },
+      {
+        "file": "raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/P6269_Open_Data_WP_EV_met_ZP.csv",
+        "rows": 10540800,
+        "meters": 300,
+        "full_stream_crc_passed": true,
+        "labels": {
+          "Warmtepomp_Indicator": "1",
+          "Elektrisch_Voertuig_Indicator": "1",
+          "PV_Installatie_Indicator": "1",
+          "Contract_Categorie": "Residentieel"
+        },
+        "readings": {
+          "Volume_Afname_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 6.246,
+            "positive_rows": 8547206
+          },
+          "Volume_Injectie_KWh": {
+            "minimum_kwh": 0.0,
+            "maximum_kwh": 3.007,
+            "positive_rows": 3165487
+          }
+        }
+      }
+    ],
+    "total_rows": 84326400,
+    "distinct_meters": 2400,
+    "cross_file_meter_overlap": 0,
+    "all_28_file_pairs_checked": true,
+    "rows_per_meter": 35136,
+    "year": 2024,
+    "interval_minutes": 15,
+    "unit": "kWh imported/exported during the quarter-hour starting at Datum_Startuur",
+    "null_fields": 0,
+    "invalid_or_nonfinite_reading_values": 0,
+    "negative_import_or_export_values": 0,
+    "invalid_or_off_grid_timestamp_rows": 0,
+    "date_timestamp_mismatches": 0,
+    "within_meter_indicator_changes": 0,
+    "meters_matching_complete_documented_local_year": 2400,
+    "source_timezone": "CET/CEST (Europe/Brussels); misleading literal Z is not interpreted as UTC",
+    "dst": {
+      "spring_date": "2024-03-31",
+      "spring_rows_per_meter": 92,
+      "autumn_date": "2024-10-27",
+      "autumn_rows_per_meter": 100,
+      "other_days_rows_per_meter": 96,
+      "source_wall_clock_slots_affected": [
+        "02:00",
+        "02:15",
+        "02:30",
+        "02:45"
+      ],
+      "physical_utc_instant_disambiguation_performed": false
+    },
+    "pv_zero_positive_export_rows": 352
+  },
+  "temperature": {
+    "file": "Brussels_Temperature_15min_2024.xlsx",
+    "sha256": "ea9b055371bd86b352978419946ff2f20a0e8485b05afe1ad02e3aafa4ff6b06",
+    "release_matches_uploaded_workbook": true,
+    "rows": 35136,
+    "finite_values": 35136,
+    "minimum": -6.769869,
+    "maximum": 33.950468,
+    "first_timestamp": "2024-01-01T00:00:00",
+    "last_timestamp": "2024-12-31T23:45:00",
+    "unique_timestamps": 35136,
+    "missing_naive_grid_timestamps": 0,
+    "daily_rows": 96,
+    "timezone": null,
+    "unit": null,
+    "source_station": null,
+    "observation_or_interpolation_method": null,
+    "interval_start_end_convention": null
+  },
+  "label_meaning": {
+    "EV": "Provider detection flag (BEV/PHEV): 1 detected; 0 not detected, not verified absence. No charging event, adoption date, charger level, or independent ownership reference.",
+    "PV": "Provider reported-installation flag; positive export exists in 352 rows with flag 0.",
+    "heat_pump": "Provider flag described as reported main heating; legend boolean descriptions contain an apparent EV-related copy-paste inconsistency."
+  },
+  "research_training_executed": false,
+  "weather_join_validated": false,
+  "limits": [
+    "Completeness is relative to the supplied archive and documented 2024 sample, not independent proof of measurement accuracy.",
+    "Balanced selected cohorts are not estimates of population technology prevalence.",
+    "Weather timezone, unit, source/station, temporal convention and interpolation provenance remain unconfirmed.",
+    "No inference about model quality or superiority to the paper follows from this audit."
+  ]
+}
