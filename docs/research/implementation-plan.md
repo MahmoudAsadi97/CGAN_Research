@@ -1,6 +1,12 @@
 # V2 research implementation plan
 
-Status: prepared for review; implementation has not started.
+Status: authorized to proceed. A local GPU readiness check is available; the
+research data/training/evaluation package remains to be implemented.
+
+The selected training target is now the laptop GPU, pending its hardware check,
+with a portable local workflow described in [local GPU setup](../local-gpu.md).
+The Colab workflow below remains an optional runtime. Temperature is not required
+by the paper's implemented inputs and is excluded from the initial baseline.
 
 **Goal:** Build a reproducible calendar-conditioned cGAN, corrected evaluation,
 paper-style figures, and a Colab GPU workflow for my measured daily load data.

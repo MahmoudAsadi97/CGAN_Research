@@ -28,8 +28,8 @@ so I keep corrected metrics separate from historical compatibility diagnostics.
 - The development branch is `V2`. I will decide when to merge it; `main` remains
   unchanged.
 - The research design is approved, with EV labels excluded from the baseline.
-- The implementation plan is available for review. The training pipeline has
-  not been implemented yet.
+- The implementation plan is authorized. The local GPU readiness check is
+  available; the research training pipeline has not been implemented yet.
 - The `Dataset` release now includes `raw.zip`. I downloaded it and verified
   its SHA-256 against the published release checksum. The archive contains
   eight electricity CSVs, a data dictionary, and the Brussels temperature
@@ -48,6 +48,7 @@ so I keep corrected metrics separate from historical compatibility diagnostics.
 - [Dataset availability and quality audit](docs/research/dataset-audit.md)
 - [EV-labeling considerations](docs/research/ev-labeling.md)
 - [CPU development environment](docs/cloud-environment.md)
+- [Laptop GPU setup and readiness check](docs/local-gpu.md)
 
 The existing `scripts/setup-cloud.sh` is for the CPU cloud workspace. I do not
 run it over Colab's GPU-enabled PyTorch installation. The planned Colab notebook

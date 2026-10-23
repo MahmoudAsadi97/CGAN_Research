@@ -56,17 +56,19 @@ cloud environment snapshot.
 
 ## Dataset and GPU training
 
-The dataset will be supplied in a GitHub release. No release tag, asset name,
-format, or class labels are assumed by this setup. Once available, download the
-chosen release asset into `/workspace/datasets/CGAN_Research`, verify a published
-checksum if supplied, and inspect its schema before building the loader. Keep
-large datasets, checkpoints, and generated training outputs out of Git commits.
+The `Dataset` release now includes the audited `raw.zip`; its schema, source
+checksum, coverage, and provider indicator definitions are recorded in the
+[dataset audit](research/dataset-audit.md). Cloud data is stored outside the
+checkout in `/workspace/datasets/CGAN_Research`. Keep large datasets, checkpoints,
+and generated training outputs out of Git commits.
 
 GitHub hosts the code and release files. Training runs on a compute machine.
-This cloud development environment has no NVIDIA GPU. Use a GPU runtime in Colab, Kaggle,
-or a GPU cloud VM for substantial training. Use that runtime's supported CUDA
-PyTorch installation instead of running this CPU-specific installer there.
-For GitHub Actions automation, connect a GPU machine as a self-hosted runner.
+This cloud development environment has no NVIDIA GPU. A laptop GPU can run the
+project through a local checkout; see [laptop GPU setup](local-gpu.md).
+Colab, Kaggle, or a GPU cloud VM are other runtime options. Use the chosen
+runtime's compatible GPU PyTorch installation instead of running this
+CPU-specific installer there. A browser cloud session does not attach to the
+laptop GPU automatically.
 
 The cloud workspace is already isolated. I use the provided checkout and do not
 need an additional Git worktree for this project.

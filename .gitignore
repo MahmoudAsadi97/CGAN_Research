@@ -1,0 +1,22 @@
+# Local environments, data, and experiment artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+data/
+datasets/
+raw/
+outputs/
+runs/
+checkpoints/
+*.pt
+*.pth
+gpu-check*.json
+.env
+.env.*
+!.env.example
