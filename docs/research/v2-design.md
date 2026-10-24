@@ -1,7 +1,8 @@
 # V2 conditional load-profile research design
 
-Status: baseline design approved on 2026-10-22, with EV ownership and charger
-labels excluded. Implementation planning is in progress.
+Status: I approved the baseline design on 2026-10-22, with EV ownership and
+charger labels excluded. I have implemented the electricity-only pipeline and
+record its checks and blocked GPU pilot in the [experiment register](experiment-register.md).
 
 ## Goal and constraints
 
@@ -307,8 +308,9 @@ file-level implementation plan. Implementation tests must cover:
 6. A measured-data pilot and a real Colab GPU run before claiming GPU workflow
    validation; full baseline/candidate runs before any performance claim.
 
-Current deliverables are `V2`, source provenance, the completed release audit,
-and this approved baseline design. The next data work is the long-format adapter,
-declared load/calendar mapping, and daily-profile preparation. The GPU workflow
-will run in Colab and preserve logs, checkpoints, metrics, and figures for review.
-No research training has occurred and no same-or-better result is claimed.
+I have implemented the V2 pipeline and prepared the local electricity archive.
+The [experiment register](experiment-register.md) records my actual verification,
+source-integrity caveat, and remaining runtime limits. I target the existing local
+`gpu_env`; the Colab notebook remains portable code whose hosted GPU/Drive restart
+behavior has not been verified. My current session blocks GPU access, so I have
+no measured GPU training result or same-or-better performance claim.

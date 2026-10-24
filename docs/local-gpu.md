@@ -79,12 +79,19 @@ that setting. Actual compatibility must be established on the selected hardware.
 
 ## Research status
 
-The [dataset audit](research/dataset-audit.md) supplies the actual input schema.
-The [implementation plan](research/implementation-plan.md) defines preprocessing,
-training, evaluation, and figures. Temperature is optional and does not block
-the baseline. The research package remains to be implemented; the environment
-check is not a measured-data pilot or evidence of model quality.
+I use the existing `gpu_env` (Python 3.10.12, PyTorch 2.5.1 with CUDA 12.1) for
+the implemented pipeline. My earlier `gpu-check.json` recorded a successful RTX
+2070 environment smoke. In the current managed session, `/dev/dxg` is absent,
+NVIDIA reports GPU access blocked by the operating system, and PyTorch reports
+CUDA unavailable. I cannot infer current GPU execution from the earlier report.
 
-Current verification covers CPU execution and failure reporting in the cloud.
-No laptop GPU computation or local access has been verified yet. All code
-changes stay on `V2`; raw data, checkpoints, and outputs stay outside commits.
+My pipeline's CUDA pilot fails explicitly and preserves a failed run status;
+it never substitutes CPU. I need a runtime with GPU device access to execute the
+bounded pilot in [the README](../README.md). I retain its step/time budget,
+checkpoint interval, and validation-only selection. I have not measured GPU
+throughput, memory usage, or model performance in this session.
+
+I record data preparation, CPU tests, independent review, and current limits in
+my [experiment register](research/experiment-register.md). Temperature is
+excluded. All changes remain in the V2 working tree; the managed session also
+mounts `.git` read-only and cannot resolve GitHub, preventing commit and push.

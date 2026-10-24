@@ -1,0 +1,41 @@
+# Electricity-only release adapter. EV detection remains metadata, never a condition.
+dataset:
+  hourly_columns: [load_00, load_01, load_02, load_03, load_04, load_05, load_06, load_07, load_08, load_09, load_10, load_11, load_12, load_13, load_14, load_15, load_16, load_17, load_18, load_19, load_20, load_21, load_22, load_23]
+  profile_id_column: profile_id
+  household_id_column: household_id
+  date_column: date
+  timezone: Europe/Brussels
+  units: kWh
+  interval_convention: start
+  season_months:
+    winter: [12, 1, 2]
+    spring: [3, 4, 5]
+    summer: [6, 7, 8]
+    autumn: [9, 10, 11]
+  weekend_days: [5, 6]
+  holiday_dates: []  # No holiday jurisdiction/calendar is inferred.
+  condition_columns: []
+  expected_cohorts: 8
+  source_year: 2024
+  chunksize: 250000
+  max_meters_per_cohort: 300
+  max_expanded_bytes: 20000000000
+  synthetic: false
+  electricity_prefixes:
+    - raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_1/
+    - raw/P6269_1_50_DMK_Sample_Elek_2024_Deel_2/
+    - P6269_1_50_DMK_Sample_Elek_2024_Deel_1/
+    - P6269_1_50_DMK_Sample_Elek_2024_Deel_2/
+preparation:
+  split_seed: 42
+  split_fractions: [0.70, 0.15, 0.15]
+source:
+  url: https://github.com/MahmoudAsadi97/CGAN_Research/releases/download/Dataset/raw.zip
+  sha256: 854b18f4adfd269675baabe7388578f4a1b7bb440529c09854fa0952574ae449
+  bytes: 395824014
+  quantity: hourly net grid exchange; sum four quarter-hour import-minus-export kWh readings
+  grouping_semantics: meter proxy; independently verified household mapping unavailable
+  ev_detection_semantics: 1 detected BEV/PHEV; 0 not detected; absence and ownership unverified
+  timezone_semantics: literal source Z is not UTC; source legend and audit establish Belgian local CET/CEST
+  weather_used: false
+  license_notice: Preserve source license and attribution; availability alone does not establish redistribution rights.

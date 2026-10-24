@@ -1,7 +1,10 @@
 # V2 research implementation plan
 
-Status: authorized to proceed. A local GPU readiness check is available; the
-research data/training/evaluation package remains to be implemented.
+Status: I have implemented and CPU-tested the electricity-only pipeline and
+prepared the local measured archive. I record verification, independent review,
+and the blocked GPU pilot in the [experiment register](experiment-register.md).
+The checklist below is my original acceptance plan; unexecuted GPU/full-run
+items remain explicit continuation work rather than completed experiments.
 
 The selected training target is now the laptop GPU, pending its hardware check,
 with a portable local workflow described in [local GPU setup](../local-gpu.md).
@@ -386,10 +389,10 @@ configuration, and command outcomes. It supports an explicit resume path.
 
 ## Delivery and outstanding inputs
 
-Tasks 1–6 can be implemented and checked with clearly marked synthetic fixtures
-once this plan is reviewed. The real asset has now been downloaded and its schema
-inspected; the importer must be checked against it before claiming support.
-Task 7's GPU checks still require execution in my Colab runtime.
+I have implemented Tasks 1–6 and checked the integrated CPU workflow using
+synthetic fixtures. I have also validated the long-format adapter on the local
+electricity archive. My current session blocks GPU execution; full-budget
+experiments and hosted Colab restart verification remain unexecuted.
 
 The [dataset audit](dataset-audit.md) records the full release check on
 22 October 2026. The remaining inputs concern weather time convention, units,

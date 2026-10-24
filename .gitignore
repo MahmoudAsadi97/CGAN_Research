@@ -20,3 +20,11 @@ gpu-check*.json
 .env
 .env.*
 !.env.example
+gpu_env/
+artifacts/
+*.npz
+*.npy
+*.zip
+*.parquet
+*.csv
+!tests/fixtures/*.csv

@@ -1,0 +1,11 @@
+# I compare these only after declaring a full-run budget from GPU pilot evidence.
+# Every candidate shares splits, preprocessing, samples, seeds, and optimizer steps.
+candidates:
+  reference: {sampling: fixed}
+  epoch_shuffle: {sampling: shuffle}
+  class_balanced: {sampling: balanced}
+planned_seeds: [17, 42, 2025, 31415, 27182]
+selection: validation macro Wasserstein divided by training feature standard deviation
+bootstrap_seed: 42
+bootstrap_replicates: 1000
+launch_authorized_by_this_file: false

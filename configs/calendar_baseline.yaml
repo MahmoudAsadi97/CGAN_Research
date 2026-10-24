@@ -1,0 +1,28 @@
+# I use this bounded pilot configuration for the reference architecture.
+# A full experiment requires a separately recorded budget and all planned seeds.
+training:
+  seed: 17
+  device: cuda
+  batch_size: 2000
+  max_epochs: 10000
+  max_steps: 400
+  max_seconds: 600
+  sampling: fixed
+  g_lr: 0.0001
+  d_lr: 0.0002
+  betas: [0.9, 0.999]
+  epsilon: 0.00000001
+  weight_decay: 0
+  checkpoint_interval: 25
+  validation_interval: 100
+  evaluation_seed: 42
+  samples_per_condition: 2000
+  cpu_threads: 1
+protocol:
+  kind: bounded_pilot
+  test_opened: false
+  planned_full_seeds: [17, 42, 2025, 31415, 27182]
+  conditions: [season, calendar_day_type]
+  temperature_used: false
+  provider_ev_detection_used_as_condition: false
+  stop_rule: first of 400 optimizer steps, 10000 epochs, or 600 cumulative seconds between batches
